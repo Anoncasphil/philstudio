@@ -140,15 +140,23 @@ function App() {
 
       {/* Projects */}
       <section id="projects" className="mx-auto max-w-6xl px-8 py-20">
-        <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold">Projects</h2>
+        <div className="mb-8">
+          <div className="flex items-end justify-between">
+            <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+              <span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_16px_rgba(236,72,153,0.15)]">
+                Projects
+              </span>
+            </h2>
+          </div>
+          <div className="mt-3 h-1 w-24 rounded-full bg-gradient-to-r from-fuchsia-500/70 via-indigo-500/70 to-emerald-400/70" />
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               title: 'Sustainable IoT-Based Water Monitoring and Management',
               img: iotImg,
               tech: ['PHP', 'MySQL', 'Arduino', 'C++', 'JavaScript', 'Git'],
+              href: '#',
               desc:
                 'An IoT-driven web platform for real‑time monitoring of turbidity, TDS, pH, and temperature. Includes automated control routines that filter and dispense water based on sensor thresholds to promote sustainable usage.'
             },
@@ -156,6 +164,7 @@ function App() {
               title: 'Resort Reservation System',
               img: resortImg,
               tech: ['PHP', 'MySQL', 'JavaScript', 'Git', 'Docker'],
+              href: '#',
               desc:
                 'A reservation website for an eco‑resort featuring bookings, availability management, and administrative tools. Designed for reliability and smooth guest workflow.'
             },
@@ -163,47 +172,72 @@ function App() {
               title: 'Personalized Company Website with Inventory Management',
               img: personalizedImg,
               tech: ['PHP', 'MySQL', 'JavaScript', 'Git'],
+              href: '#',
               desc:
                 'An auto‑supply business website integrated with a basic inventory module for tracking products and stock levels, aimed at improving browsing and day‑to‑day operations.'
             },
           ].map((p, i) => (
-            <div key={p.title} className="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/20 transition hover:bg-zinc-900/40 animate-slideUp" style={{ animationDelay: `${i * 120}ms` }}>
-              <div className="relative h-44 w-full overflow-hidden bg-zinc-900">
-                <img src={p.img} alt={p.title} className="h-full w-full object-cover opacity-90 transition group-hover:scale-[1.02] group-hover:opacity-100" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-900/70 to-transparent" />
-              </div>
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-medium">{p.title}</h3>
-                  <OpenInNewIcon sx={{ fontSize: 18 }} className="text-zinc-400 transition group-hover:text-white" />
+            <article
+              key={p.title}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/30 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:bg-zinc-900/50 animate-slideUp"
+              style={{ animationDelay: `${i * 120}ms` }}
+            >
+              <a
+                href={p.href}
+                className="outline-none"
+                aria-label={`${p.title} project`}
+              >
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent" />
                 </div>
-                <p className="mt-2 text-sm text-zinc-400">{p.desc}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.tech.map((t) => (
-                    <span key={t} className="rounded-full border border-zinc-800/80 bg-zinc-900/40 px-2 py-0.5 text-xs text-zinc-300">
-                      {t}
-                    </span>
-                  ))}
+                <div className="p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-base font-semibold tracking-tight text-white">{p.title}</h3>
+                    <OpenInNewIcon sx={{ fontSize: 18 }} className="text-zinc-400 transition-colors group-hover:text-white" />
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-zinc-400">
+                    {p.desc}
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                    {p.tech.slice(0, 4).map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full bg-white/5 px-2 py-0.5 text-xs text-zinc-300 ring-1 ring-white/10"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                    {p.tech.length > 4 && (
+                      <span className="rounded-full bg-white/5 px-2 py-0.5 text-xs text-zinc-300 ring-1 ring-white/10">+{p.tech.length - 4}</span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </div>
+              </a>
+            </article>
           ))}
         </div>
       </section>
 
       {/* About */}
       <section id="about" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">About</h2>
-        <p className="mt-3 max-w-3xl text-zinc-300 animate-fadeIn" style={{ animationDelay: '120ms' }}>
-          BSIT student at National University Manila (Mobile & Internet Technology). Built a Resort
-          Reservation System and other academic projects; comfortable with React, TypeScript, Node.js,
-          MySQL, and Tailwind. Seeking internship opportunities to grow as a full‑stack developer.
-        </p>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">About</span></h2>
+        <div className="mt-4 rounded-2xl border border-white/10 bg-zinc-900/30 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm">
+          <p className="max-w-3xl text-zinc-300">
+            BSIT student at National University Manila (Mobile & Internet Technology). Built a Resort
+            Reservation System and other academic projects; comfortable with React, TypeScript, Node.js,
+            MySQL, and Tailwind. Seeking internship opportunities to grow as a full‑stack developer.
+          </p>
+        </div>
       </section>
 
       {/* Skills */}
       <section id="skills" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">Skills</h2>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">Skills</span></h2>
         <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
           {[
             { name: 'React', Icon: CodeIcon },
@@ -215,8 +249,8 @@ function App() {
             { name: 'Databases', Icon: StorageIcon },
             { name: 'General Web', Icon: CodeIcon },
           ].map((s, i) => (
-            <div key={s.name} className="flex items-center gap-3 rounded-lg border border-zinc-800 px-3 py-2 text-sm text-zinc-300 animate-slideUp" style={{ animationDelay: `${i * 70}ms` }}>
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-white/10 text-white">
+            <div key={s.name} className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-200 ring-1 ring-white/5 animate-slideUp" style={{ animationDelay: `${i * 70}ms` }}>
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/10">
                 <s.Icon sx={{ fontSize: 16 }} />
               </span>
               {s.name}
@@ -227,16 +261,16 @@ function App() {
 
       {/* Services */}
       <section id="services" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">Services</h2>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">Services</span></h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {[
             { title: 'Web App Development', desc: 'Modern, performant React/TS apps.' , Icon: CodeIcon },
             { title: 'API & Integrations', desc: 'Robust REST integrations and backends.', Icon: ApiIcon },
             { title: 'UI Engineering', desc: 'Accessible, responsive interfaces.', Icon: BuildIcon },
           ].map((s, i) => (
-            <div key={s.title} className="rounded-xl border border-zinc-800 p-5 transition hover:bg-zinc-900 animate-slideUp" style={{ animationDelay: `${i * 100}ms` }}>
+            <div key={s.title} className="rounded-2xl border border-white/10 bg-zinc-900/30 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-zinc-900/50 animate-slideUp" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-white/10 text-white"><s.Icon sx={{ fontSize: 18 }} /></span>
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-white/10 text-white ring-1 ring-white/10"><s.Icon sx={{ fontSize: 18 }} /></span>
                 <h3 className="text-base font-medium">{s.title}</h3>
               </div>
               <p className="mt-2 text-sm text-zinc-400">{s.desc}</p>
@@ -247,7 +281,7 @@ function App() {
 
       {/* Experience */}
       <section id="experience" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">Experience</h2>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">Experience</span></h2>
         <ol className="mt-6 space-y-6">
           {[
             { role: 'Reservation System Developer (Capstone)', company: 'National University Fairview', period: 'Mar 2025', summary: 'Resort reservation system with booking, payments, and admin features. Backend with Node.js + MySQL.' },
@@ -255,7 +289,7 @@ function App() {
             { role: 'School Event Volunteer', company: 'National University Fairview', period: 'Jan 2023', summary: 'Supported event logistics, setup, and coordination with peers and faculty.' },
             { role: 'Intern', company: 'Hytec Power Inc.', period: '2022', summary: 'Assisted in testing, maintenance, troubleshooting, and documentation.' },
           ].map((e, i) => (
-            <li key={e.role} className="relative rounded-xl border border-zinc-800 p-5 animate-slideUp" style={{ animationDelay: `${i * 100}ms` }}>
+            <li key={e.role} className="relative rounded-2xl border border-white/10 bg-zinc-900/30 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm animate-slideUp" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-medium">{e.role} · <span className="text-zinc-400">{e.company}</span></h3>
                 <span className="text-xs text-zinc-400">{e.period}</span>
@@ -268,13 +302,13 @@ function App() {
 
       {/* Education & Certifications */}
       <section id="education" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">Education & Certifications</h2>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">Education & Certifications</span></h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div className="rounded-xl border border-zinc-800 p-5 animate-fadeIn">
+          <div className="rounded-2xl border border-white/10 bg-zinc-900/30 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm animate-fadeIn">
             <h3 className="text-base font-medium">BS Information Technology — Mobile & Internet Technology</h3>
             <p className="mt-1 text-sm text-zinc-400">National University Manila · Aug 2022 — Present</p>
           </div>
-          <div className="rounded-xl border border-zinc-800 p-5 animate-fadeIn" style={{ animationDelay: '100ms' }}>
+          <div className="rounded-2xl border border-white/10 bg-zinc-900/30 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm animate-fadeIn" style={{ animationDelay: '100ms' }}>
             <h3 className="text-base font-medium">Senior High School — STEM</h3>
             <p className="mt-1 text-sm text-zinc-400">St. Francis Technical Institute · Jun 2020 — Jul 2022</p>
           </div>
@@ -283,10 +317,10 @@ function App() {
 
       {/* Testimonials */}
       <section id="testimonials" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">Testimonials</h2>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">Testimonials</span></h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[1,2].map((i) => (
-            <blockquote key={i} className="rounded-xl border border-zinc-800 p-5 italic text-zinc-300 animate-fadeIn" style={{ animationDelay: `${i * 80}ms` }}>
+            <blockquote key={i} className="rounded-2xl border border-white/10 bg-zinc-900/30 p-5 italic text-zinc-300 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm animate-fadeIn" style={{ animationDelay: `${i * 80}ms` }}>
               “Antoine delivered excellent work on time. Great communication and attention to detail.”
               <footer className="mt-3 text-sm not-italic text-zinc-400">— Client Name, Role</footer>
             </blockquote>
@@ -296,14 +330,14 @@ function App() {
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-6xl px-8 py-20">
-        <h2 className="text-2xl font-semibold">FAQ</h2>
+        <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">FAQ</span></h2>
         <div className="mt-6 space-y-3">
           {[
             { q: 'What services do you offer?', a: 'End-to-end web development: frontend, APIs, and integrations.' },
             { q: 'Are you available for freelance?', a: 'Yes—feel free to reach out with scope and timelines.' },
             { q: 'Preferred stack?', a: 'React, TypeScript, Node.js, Tailwind, and Vite/Next.js.' },
           ].map((f, i) => (
-            <details key={f.q} className="group rounded-xl border border-zinc-800 p-4 animate-slideUp" style={{ animationDelay: `${i * 80}ms` }}>
+            <details key={f.q} className="group rounded-2xl border border-white/10 bg-zinc-900/30 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm animate-slideUp" style={{ animationDelay: `${i * 80}ms` }}>
               <summary className="cursor-pointer list-none text-sm font-medium text-white">
                 {f.q}
               </summary>
@@ -315,12 +349,12 @@ function App() {
 
       {/* Contact */}
       <section id="contact" className="mx-auto max-w-6xl px-8 py-20">
-        <div className="rounded-2xl border border-zinc-800 p-6">
-          <h2 className="text-2xl font-semibold">Contact</h2>
+        <div className="rounded-2xl border border-white/10 bg-zinc-900/30 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] backdrop-blur-sm">
+          <h2 className="text-3xl font-semibold tracking-tight"><span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent">Contact</span></h2>
           <p className="mt-2 text-zinc-300">Reach out via email or socials above.</p>
           <a
             href="#"
-            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-zinc-900 transition hover:bg-zinc-200"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white/90 px-4 py-2 text-sm font-medium text-zinc-900 transition hover:bg-white"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
               <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15A2.25 2.25 0 0 1 2.25 17.25V6.75Zm2.443.75a.75.75 0 0 0-.443.137l7.25 5.438 7.25-5.438a.75.75 0 0 0-.443-.137H4.693Zm15.057 1.878-6.91 5.184a.75.75 0 0 1-.88 0L5.05 9.378V16.5a.75.75 0 0 0 .75.75h12.4a.75.75 0 0 0 .75-.75V9.378Z" />
