@@ -46,6 +46,7 @@ function App() {
       <section id="home" className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-6xl items-center px-8 py-16 sm:py-20">
         {/* Tech grid background */}
         <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="animated-gradient" />
           <div className="h-full w-full bg-[radial-gradient(circle_at_20%_0%,rgba(99,102,241,0.10),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.10),transparent_45%),radial-gradient(circle_at_30%_80%,rgba(16,185,129,0.10),transparent_42%),radial-gradient(circle_at_90%_90%,rgba(14,165,233,0.10),transparent_45%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]" />
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-fuchsia-500/10 to-emerald-500/5" />
