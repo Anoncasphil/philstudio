@@ -17,6 +17,19 @@ import lightLogoUrl from './assets/lightmode_philtech.svg'
 import iotImg from './assets/images/iot.png'
 import personalizedImg from './assets/images/personalizedwebsite.png'
 import resortImg from './assets/images/reservationresort.png'
+
+// Add smooth scrolling behavior
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    })
+  }
+}
+
 // Define SVG icons as inline components
 const ReactIcon = () => (
   <svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +286,7 @@ function App() {
           : 'border-gray-200 bg-white/80'
       }`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-          <a href="#home" className="flex items-center">
+          <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="flex items-center cursor-pointer">
             <img 
               src={theme === 'dark' ? logoUrl : lightLogoUrl} 
               alt="PhilTech" 
@@ -282,28 +295,28 @@ function App() {
           </a>
           <div className="flex items-center gap-4">
           <nav className="hidden items-center gap-6 text-sm sm:flex">
-              <a href="#projects" className={`transition-colors ${
+              <a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>Projects</a>
-              <a href="#services" className={`transition-colors ${
+              <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>Services</a>
-              <a href="#about" className={`transition-colors ${
+              <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>About</a>
-              <a href="#skills" className={`transition-colors ${
+              <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>Skills</a>
-              <a href="#experience" className={`transition-colors ${
+              <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>Experience</a>
-              <a href="#education" className={`transition-colors ${
+              <a href="#education" onClick={(e) => { e.preventDefault(); scrollToSection('education'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>Education</a>
-              <a href="#faq" className={`transition-colors ${
+              <a href="#faq" onClick={(e) => { e.preventDefault(); scrollToSection('faq'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>FAQ</a>
-              <a href="#contact" className={`transition-colors ${
+              <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className={`transition-colors cursor-pointer ${
                 theme === 'dark' ? 'text-zinc-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}>Contact</a>
           </nav>
@@ -397,13 +410,15 @@ function App() {
             >
               <a
                 href="#projects"
-                className="rounded-lg bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:from-indigo-400 hover:to-fuchsia-400 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500/40"
+                onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
+                className="rounded-lg bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:from-indigo-400 hover:to-fuchsia-400 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500/40 cursor-pointer"
               >
                 View Projects
               </a>
               <a
                 href="#contact"
-                className={`rounded-lg border px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500/40 ${
+                onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+                className={`rounded-lg border px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500/40 cursor-pointer ${
                   theme === 'dark' 
                     ? 'border-white/20 text-white hover:bg-white/10' 
                     : 'border-gray-300 text-gray-900 hover:bg-gray-100'
@@ -984,7 +999,7 @@ function App() {
               : 'border-gray-300 bg-gray-50 text-gray-900 hover:bg-gray-100'
           } transition-all duration-300`}>
             <span className="text-sm font-medium">Ready to start your project?</span>
-            <a href="#contact" className={`text-sm font-semibold transition-colors ${
+            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className={`text-sm font-semibold transition-colors cursor-pointer ${
               theme === 'dark' 
                 ? 'text-indigo-400 hover:text-indigo-300'
                 : 'text-indigo-600 hover:text-indigo-500'
